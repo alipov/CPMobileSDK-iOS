@@ -80,6 +80,8 @@ In your Info.plist file, add a new row, with the following data:
 
 <img src="DocImages/CPMobileSDKAppID.png">
 
+You can find the full SDK documentation [here](https://rawgit.com/CheckPointSoftwareTechnologies/CPMobileSDK-iOS/master/Documentation/index.html).
+
 ###Code Integration
 
 Integration can be achieved in two methods. There are demo projects for each.
