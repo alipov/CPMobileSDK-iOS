@@ -31,6 +31,8 @@ App state transitions are accompanied by corresponding notifications. These noti
 | `CPMobileSDKDidUnlockApplicationNotification` | Posted when the application is unlocked. |
 | `CPMobileSDKDidLockApplicationNotification` | Posted when the application is locked. |
 
+You can find the full SDK documentation [here](https://rawgit.com/CheckPointSoftwareTechnologies/CPMobileSDK-iOS/master/Documentation/index.html).
+
 ##Integration
 
 The framework can be used with both Objective–C and Swift projects.
@@ -79,8 +81,6 @@ In your Info.plist file, add a new row, with the following data:
 | CPMobileSDKAppID | String | `$(PRODUCT_BUNDLE_IDENTIFIER)` |
 
 <img src="DocImages/CPMobileSDKAppID.png">
-
-You can find the full SDK documentation [here](https://rawgit.com/CheckPointSoftwareTechnologies/CPMobileSDK-iOS/master/Documentation/index.html).
 
 ###Code Integration
 
