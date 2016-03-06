@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Functions  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Functions  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a class="header-title" href="index.html">CPMobileSDK Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">CPMobileSDK Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Functions  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/CPMobileSDK.html">CPMobileSDK</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPMobileSDKOptions.html">CPMobileSDKOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPSecureDocumentInteractionController.html">CPSecureDocumentInteractionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPSecurePasteboard.html">CPSecurePasteboard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPSecureUserDefaults.html">CPSecureUserDefaults</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK41CPMobileSDKDidLockApplicationNotificationSS">CPMobileSDKDidLockApplicationNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK43CPMobileSDKDidUnlockApplicationNotificationSS">CPMobileSDKDidUnlockApplicationNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK38CPMobileSDKDisableSecurityNotificationSS">CPMobileSDKDisableSecurityNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK45CPMobileSDKEncryptionKeyAvailableNotificationSS">CPMobileSDKEncryptionKeyAvailableNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK47CPMobileSDKEncryptionKeyUnavailableNotificationSS">CPMobileSDKEncryptionKeyUnavailableNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK35CPMobileSDKEncryptionKeyUserInfoKeySS">CPMobileSDKEncryptionKeyUserInfoKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK18CPMobileSDKVersionSS">CPMobileSDKVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11CPMobileSDK26CPMobileSDKApplicationMainFTVSs5Int32GVSs20UnsafeMutablePointerGS1_VSs4Int8__GSqSS_GSqSS_GSqCS_18CPMobileSDKOptions__S0_">CPMobileSDKApplicationMain(_:_:_:_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1 class="h1_class">Functions</h1>
+            <p>The following functions are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:F11CPMobileSDK26CPMobileSDKApplicationMainFTVSs5Int32GVSs20UnsafeMutablePointerGS1_VSs4Int8__GSqSS_GSqSS_GSqCS_18CPMobileSDKOptions__S0_"></a>
+                    <a name="//apple_ref/swift/Function/CPMobileSDKApplicationMain(_:_:_:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F11CPMobileSDK26CPMobileSDKApplicationMainFTVSs5Int32GVSs20UnsafeMutablePointerGS1_VSs4Int8__GSqSS_GSqSS_GSqCS_18CPMobileSDKOptions__S0_">CPMobileSDKApplicationMain(_:_:_:_:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a convenience function for quick integration with the SDK. Call this function in your <code>main</code> function instead of <code>UIApplicationMain</code>.</p>
+
+<p>The function is called in the main entry point to create the application object and the application delegate and set up the event cycle. Internally, <code><a href="Classes/CPMobileSDK.html#/s:ZFC11CPMobileSDK11CPMobileSDK19startSDKWithOptionsFMS0_FGSqCS_18CPMobileSDKOptions_T_">CPMobileSDK.startSDKWithOptions(_:)</a></code> is called to start the SDK with the provided options. Once the system is ready and the user has unlocked the application, the application delegate will start receiving normal application life cycle method calls.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="kt">CPMobileSDKApplicationMain</span><span class="p">(</span><span class="nv">argc</span><span class="p">:</span> <span class="kt">Int32</span><span class="p">,</span> <span class="n">_</span> <span class="nv">argv</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int8</span><span class="o">&gt;&gt;</span><span class="p">,</span> <span class="n">_</span> <span class="nv">principalClassName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="n">_</span> <span class="nv">delegateClassName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="n">_</span> <span class="kt">SDKOptions</span><span class="p">:</span> <span class="kt">CPMobileSDKOptions</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Int32</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>argc</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The count of arguments in <code>argv</code>; this usually is the corresponding parameter to <code>main</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>argv</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A variable list of arguments; this usually is the corresponding parameter to <code>main</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>principalClassName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the <code>UIApplication</code> class or subclass. If you specify <code>nil</code>, the value for <code>NSPrincipalClass</code> from the Info.plist is used. If there is no <code>NSPrincipalClass</code> key specified, the <code>UIApplication</code> class is used.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delegateClassName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the class from which the application delegate is instantiated. If <code>principalClassName</code> designates a subclass of <code>UIApplication</code>, you may designate the subclass as the delegate; the subclass instance receives the application-delegate messages. Specify <code>nil</code> if you load the delegate object from your application’s main nib file. The delegate class will be instantiated using <code>init</code>.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>SDKOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An options object, defining the behavior of the mobile SDK.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Even though an integer return type is specified, this function never returns.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://www.checkpoint.com" target="_blank" rel="external">Check Point Software Technologies</a>. All rights reserved.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

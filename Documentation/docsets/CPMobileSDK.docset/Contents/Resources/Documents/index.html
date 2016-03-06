@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CPMobileSDK  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="CPMobileSDK  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a class="header-title" href="index.html">CPMobileSDK Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">CPMobileSDK Reference</a>
+        <img id="carat" src="img/carat.png" />
+        CPMobileSDK  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/CPMobileSDK.html">CPMobileSDK</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPMobileSDKOptions.html">CPMobileSDKOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPSecureDocumentInteractionController.html">CPSecureDocumentInteractionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPSecurePasteboard.html">CPSecurePasteboard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CPSecureUserDefaults.html">CPSecureUserDefaults</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK41CPMobileSDKDidLockApplicationNotificationSS">CPMobileSDKDidLockApplicationNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK43CPMobileSDKDidUnlockApplicationNotificationSS">CPMobileSDKDidUnlockApplicationNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK38CPMobileSDKDisableSecurityNotificationSS">CPMobileSDKDisableSecurityNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK45CPMobileSDKEncryptionKeyAvailableNotificationSS">CPMobileSDKEncryptionKeyAvailableNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK47CPMobileSDKEncryptionKeyUnavailableNotificationSS">CPMobileSDKEncryptionKeyUnavailableNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK35CPMobileSDKEncryptionKeyUserInfoKeySS">CPMobileSDKEncryptionKeyUserInfoKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v11CPMobileSDK18CPMobileSDKVersionSS">CPMobileSDKVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:F11CPMobileSDK26CPMobileSDKApplicationMainFTVSs5Int32GVSs20UnsafeMutablePointerGS1_VSs4Int8__GSqSS_GSqSS_GSqCS_18CPMobileSDKOptions__S0_">CPMobileSDKApplicationMain(_:_:_:_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#check_point_mobile_sdk_for_ios' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='check_point_mobile_sdk_for_ios'>Check Point Mobile SDK for iOS</h1>
+
+<p>The Check Point Mobile SDK (CPMobileSDK) for iOS is an advanced framework for integrating iOS apps securely and effortlessly with <a href="https://itunes.apple.com/us/app/capsule-workspace/id522091441?mt=8" target="_blank">Check Point Capsule Workspace</a>.</p>
+
+<p>By integrating with Capsule Workspace, apps benefit from the following advantages:</p>
+
+<ul>
+<li>Secure access to corporate network resources</li>
+<li>Passcode protection</li>
+<li>Mobile policy enforcement, such as secure pasteboard (copy&amp;paste), document interaction, etc.</li>
+</ul>
+<a href='#overview' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='overview'>Overview</h2>
+
+<p>Normally, iOS apps are in one of the following states: not running, background, inactive, active, suspended. The system moves the app from state to state in response to actions happening throughout the system. For example, when the user presses the Home button, a phone call comes in, or any of several other interruptions occurs, the currently running apps change state in response. </p>
+
+<p><img src="DocImages/AppLifeCycle.png"></p>
+
+<p>When integrating, the normal states change to accommodate the need for user unlock the application and the system&rsquo;s need to obtain the encryption keys from Capsule Workspace.</p>
+
+<p><img src="DocImages/SDKAppLifeCycle.png"></p>
+
+<p>When application first starts, it starts in a lock state and does not have the encryption key. After user authenticates with Capsule Workspace, the system obtains the encryption key from Capsule Workspace and unlocks the user interface. At this point, the application can become either active or inactive, depending on system considerations. Once an application moves to background, its UI is locked (but the encryption key remains in memory). Moving the application to foreground will trigger check with Capsule Workspace if user authentication is necessary; if not, it will be unlocked immediately, otherwise the user will be presented with authentication screen.</p>
+
+<p>Under some cases, the encryption key may be removed from the system when Capsule Workspace indicates such need. In such case the application should stop all I/O operations until an encryption key is available again.</p>
+
+<p>App state transitions are accompanied by corresponding notifications. These notifications can be used to respond to state changes in an appropriate way. These notifications are listed below, along with a summary of how they might be used.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Notification Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><code>CPMobileSDKEncryptionKeyAvailableNotification</code></td>
+<td style="text-align: left">Posted when the encryption key becomes available, once the user has authenticated with Capsule Workspace. Use the <code>CPMobileSDKEncryptionKeyUserInfoKey</code> user info key to obtain the encryption key, or use the <code>CPMobileSDK.encryptionKey()</code> method.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>CPMobileSDKEncryptionKeyUnavailableNotification</code></td>
+<td style="text-align: left">Posted when the encryption key becomes unavailable, usually if user has logged out in Capsule Workspace, or some other issue has come up and requires the user’s reauthentication.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>CPMobileSDKDidUnlockApplicationNotification</code></td>
+<td style="text-align: left">Posted when the application is unlocked.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code>CPMobileSDKDidLockApplicationNotification</code></td>
+<td style="text-align: left">Posted when the application is locked.</td>
+</tr>
+</tbody></table>
+<a href='#integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='integration'>Integration</h2>
+
+<p>The framework can be used with both Objective–C and Swift projects.</p>
+<a href='#perquisites' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='perquisites'>Perquisites</h3>
+
+<p>Please read the <a href="http://secureupdates.checkpoint.com/mobile/Capsule/Check Point Mobile App Wrapping Guide (1.04).pdf" target="_blank">Check Point App Wrapping Guide</a> for information how to configure Capsule Workspace to work with wrapped and SDK–integrated apps.</p>
+<a href='#xcode_project_integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='xcode_project_integration'>Xcode Project Integration</h3>
+
+<p>Drag <code>CPMobileSDK.framework</code> to your project, and add <code>CPMobileSDK.framework</code> to <strong>Embedded Binaries</strong> in your project target&rsquo;s <strong>General</strong> tab. Xcode should sort everything else on its own.</p>
+
+<p>In your code, import the framework.</p>
+<div class="language-swift">
+    <p class="aside-title">Swift</p>
+    <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">CPMobileSDK</span>
+</code></pre>
+
+</div>
+<div class="language-objc">
+    <p class="aside-title">Objective c</p>
+    <pre class="highlight objective_c"><code><span class="k">@import</span> <span class="n">CPMobileSDK</span><span class="p">;</span>
+</code></pre>
+
+</div>
+
+<p>For Objective–C projects without module support, import the framework&rsquo;s umbrella header:</p>
+<div class="language-objc">
+    <p class="aside-title">Objective c</p>
+    <pre class="highlight objective_c"><code><span class="cp">#import &lt;CPMobileSDK/CPMobileSDK.h&gt;
+</span></code></pre>
+
+</div>
+
+<p>In order for Capsule Workspace to be able to provide information back to the app, a URL scheme and an SDK app identifier needs to be added to the app&rsquo;s Info.plist. It is recommended to use the app&rsquo;s bundle identifier for these.</p>
+
+<p>In your project, add a URL type like so:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Key</th>
+<th style="text-align: left">Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Identifier</td>
+<td style="text-align: left"><code>$(PRODUCT_BUNDLE_IDENTIFIER).url</code></td>
+</tr>
+<tr>
+<td style="text-align: left">URL Schemes</td>
+<td style="text-align: left"><code>cpsetsitedata$(PRODUCT_BUNDLE_IDENTIFIER)</code></td>
+</tr>
+<tr>
+<td style="text-align: left">Icon</td>
+<td style="text-align: left">None</td>
+</tr>
+<tr>
+<td style="text-align: left">Role</td>
+<td style="text-align: left">Viewer</td>
+</tr>
+</tbody></table>
+
+<p><img src="DocImages/URLScheme.png"></p>
+
+<p>In your Info.plist file, add a new row, with the following data:</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CPMobileSDKAppID</td>
+<td>String</td>
+<td><code>$(PRODUCT_BUNDLE_IDENTIFIER)</code></td>
+</tr>
+</tbody></table>
+
+<p><img src="DocImages/CPMobileSDKAppID.png"></p>
+<a href='#code_integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='code_integration'>Code Integration</h3>
+
+<p>Integration can be achieved in two methods. There are demo projects for each.</p>
+<a href='#quick_integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='quick_integration'>Quick Integration</h4>
+
+<p>Call the <code>CPMobileSDKApplicationMain(_:_:_:_:_:)</code> function in your <code>main</code> file/function implementation. This is a convenience function for integrating with the SDK with minimal effort. Internally, <code>CPMobileSDK.startSDKWithOptions(_:)</code> is called to start the SDK with the provided options. Once the system is ready and the user has unlocked the application, the application delegate will start receiving normal application life cycle method calls.</p>
+
+<p>Swift applications don&rsquo;t normally include a main file. Instead, they are generated using the <code>@UIApplicationMain</code> attribute. For example:</p>
+<div class="language-swift">
+    <p class="aside-title">Swift</p>
+    <pre class="highlight swift"><code><span class="kd">@UIApplicationMain</span> <span class="c1">//Remove this attribute</span>
+<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre>
+
+</div>
+
+<p>Remove this attribute and create a new Swift file named <q>main.swift</q> (it must have this exact name). In the new file, add the following call:</p>
+<div class="language-swift">
+    <p class="aside-title">Swift</p>
+    <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">CPMobileSDK</span>
+
+<span class="kt">CPMobileSDKApplicationMain</span><span class="p">(</span><span class="kt">Process</span><span class="o">.</span><span class="n">argc</span><span class="p">,</span> <span class="kt">Process</span><span class="o">.</span><span class="n">unsafeArgv</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="kt">NSStringFromClass</span><span class="p">(</span><span class="kt">AppDelegate</span><span class="p">),</span> <span class="kt">CPMobileSDKOptions</span><span class="p">())</span>
+</code></pre>
+
+</div>
+
+<p>Objective–C applications normally include a main.m file with a <code>main</code> function. Modify this method to call <code>CPMobileSDKApplicationMain</code> like so:</p>
+<div class="language-objc">
+    <p class="aside-title">Objective c</p>
+    <pre class="highlight objective_c"><code><span class="k">@import</span> <span class="n">CPMobileSDK</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="err">@autoreleasepool</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">CPMobileSDKApplicationMain</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">BrowSecAppDelegate</span> <span class="nf">class</span><span class="p">]),</span> <span class="p">[</span><span class="n">CPMobileSDKOptions</span> <span class="nf">new</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+</div>
+
+<p>Advantages </p>
+
+<ul>
+<li>Quick and easy integration with most of the SDK&rsquo;s features</li>
+<li>Requires very little changes to existing code</li>
+<li>Should be enough for most projects</li>
+</ul>
+
+<p>Disadvantages</p>
+
+<ul>
+<li>Limited control over SDK operation</li>
+<li>Might change critical application flows</li>
+</ul>
+<a href='#manual_integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='manual_integration'>Manual Integration</h4>
+
+<p>For full control of the SDK integration, the app needs to be aware of the flows of the SDK, and prepare its logic accordingly.</p>
+
+<p>Early on, add observers for at least <code>CPMobileSDKEncryptionKeyAvailableNotification</code> and <code>CPMobileSDKDidUnlockApplicationNotification</code>. Start the SDK by calling <code>CPMobileSDK.startSDKWithOptions(_:)</code> like so:</p>
+<div class="language-swift">
+    <p class="aside-title">Swift</p>
+    <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.</span>
+    <span class="kt">NSNotificationCenter</span><span class="o">.</span><span class="nf">defaultCenter</span><span class="p">()</span><span class="o">.</span><span class="nf">addObserver</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">selector</span><span class="p">:</span> <span class="err">#</span><span class="nf">selector</span><span class="p">(</span><span class="n">mobileSDKEncryptionKeyAvailable</span><span class="p">),</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">CPMobileSDKEncryptionKeyAvailableNotification</span><span class="p">,</span> <span class="nv">object</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="kt">NSNotificationCenter</span><span class="o">.</span><span class="nf">defaultCenter</span><span class="p">()</span><span class="o">.</span><span class="nf">addObserver</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">selector</span><span class="p">:</span> <span class="err">#</span><span class="nf">selector</span><span class="p">(</span><span class="n">mobileSDKDidUnlockApplication</span><span class="p">),</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">CPMobileSDKDidUnlockApplicationNotification</span><span class="p">,</span> <span class="nv">object</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+
+    <span class="kt">CPMobileSDK</span><span class="o">.</span><span class="nf">startSDKWithOptions</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+
+<span class="kd">internal</span> <span class="kd">func</span> <span class="nf">mobileSDKEncryptionKeyAvailable</span><span class="p">(</span><span class="nv">note</span><span class="p">:</span> <span class="kt">NSNotification</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">encryptionKey</span> <span class="o">=</span> <span class="n">note</span><span class="o">.</span><span class="n">userInfo</span><span class="p">?[</span><span class="kt">CPMobileSDKEncryptionKeyUserInfoKey</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">NSData</span> <span class="p">{</span>
+        <span class="c1">//Use encryption key to start I/O related API.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">internal</span> <span class="kd">func</span> <span class="nf">mobileSDKDidUnlockApplication</span><span class="p">(</span><span class="nv">note</span><span class="p">:</span> <span class="kt">NSNotification</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Present the app's UI here if not already presented.</span>
+<span class="p">}</span>
+</code></pre>
+
+</div>
+<div class="language-objc">
+    <p class="aside-title">Objective c</p>
+    <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">application</span><span class="p">:(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didFinishLaunchingWithOptions</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span> <span class="p">{</span>
+    <span class="c1">// Override point for customization after application launch.
+</span>    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="nf">addObserver</span><span class="p">:</span><span class="n">self</span> <span class="nf">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">_mobileSDKEncryptionKeyAvailable</span><span class="p">:)</span> <span class="nf">name</span><span class="p">:</span><span class="n">CPMobileSDKEncryptionKeyAvailableNotification</span> <span class="nf">object</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span> <span class="nf">addObserver</span><span class="p">:</span><span class="n">self</span> <span class="nf">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nf">_mobileSDKDidUnlockApplication</span><span class="p">:)</span> <span class="nf">name</span><span class="p">:</span><span class="n">CPMobileSDKDidUnlockApplicationNotification</span> <span class="nf">object</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+
+    <span class="p">[</span><span class="n">CPMobileSDK</span> <span class="nf">startSDKWithOptions</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">_mobileSDKEncryptionKeyAvailable</span><span class="p">:(</span><span class="n">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="nv">note</span>
+<span class="p">{</span>
+    <span class="n">NSData</span><span class="o">*</span> <span class="n">encryptionKey</span> <span class="o">=</span> <span class="n">note</span><span class="p">.</span><span class="n">userInfo</span><span class="p">[</span><span class="nf">CPMobileSDKEncryptionKeyUserInfoKey</span><span class="p">];</span>
+
+    <span class="c1">//Use encryption key to start I/O related API.
+</span><span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">_mobileSDKDidUnlockApplication</span><span class="p">:(</span><span class="n">NSNotification</span><span class="o">*</span><span class="p">)</span><span class="nv">note</span>
+<span class="p">{</span>
+    <span class="c1">//Present the app's UI here.
+</span><span class="p">}</span>
+</code></pre>
+
+</div>
+
+<p>UI can be presented before the application is unlocked by the SDK, but this may cause unexpected results, such as starting network requests or disk access. It is best to present the UI only once the application is first unlocked. For projects which start their UI in code, this is very simple – move the UI code to the <code>CPMobileSDKDidUnlockApplicationNotification</code> observer method. For UI loaded from a Storyboard or a NIB/XIB, the simplest solution is to introduce a landing view controller, and present the real UI in the <code>CPMobileSDKDidUnlockApplicationNotification</code> observer method. The included demo project demonstrates how to achieve this.</p>
+
+<p>Once the application is locked, it is generally safe to operate the UI normally, even if hidden. However, it is advised to close all work and discard the UI once a <code>CPMobileSDKEncryptionKeyUnavailableNotification</code> notification is posted.</p>
+
+<p>Advantages </p>
+
+<ul>
+<li>Complete control over the application workflows</li>
+<li>Allows performing some tasks which may not require security, while limiting security tasks once the user authenticates</li>
+</ul>
+
+<p>Disadvantages</p>
+
+<ul>
+<li>Requires more understanding of the SDK</li>
+<li>May require some changes to existing code to accommodate SDK requirements</li>
+</ul>
+<a href='#planed_sdk_features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='planed_sdk_features'>Planed SDK Features</h2>
+
+<p>In the future, the following features are planned:</p>
+
+<ul>
+<li>File encryption</li>
+<li>Drop–in secure Core Data subclasses</li>
+<li>Drop–in secure SQLite</li>
+<li>Project integration using <a href="https://github.com/Carthage/Carthage" target="_blank">Carthage</a></li>
+</ul>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://www.checkpoint.com" target="_blank" rel="external">Check Point Software Technologies</a>. All rights reserved.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

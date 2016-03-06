@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CPMobileSDKOptions Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/CPMobileSDKOptions" class="dashAnchor"></a>
+    <a title="CPMobileSDKOptions Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a class="header-title" href="../index.html">CPMobileSDK Docs</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">CPMobileSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        CPMobileSDKOptions Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/CPMobileSDK.html">CPMobileSDK</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CPMobileSDKOptions.html">CPMobileSDKOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CPSecureDocumentInteractionController.html">CPSecureDocumentInteractionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CPSecurePasteboard.html">CPSecurePasteboard</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/CPSecureUserDefaults.html">CPSecureUserDefaults</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v11CPMobileSDK41CPMobileSDKDidLockApplicationNotificationSS">CPMobileSDKDidLockApplicationNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v11CPMobileSDK43CPMobileSDKDidUnlockApplicationNotificationSS">CPMobileSDKDidUnlockApplicationNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v11CPMobileSDK38CPMobileSDKDisableSecurityNotificationSS">CPMobileSDKDisableSecurityNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v11CPMobileSDK45CPMobileSDKEncryptionKeyAvailableNotificationSS">CPMobileSDKEncryptionKeyAvailableNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v11CPMobileSDK47CPMobileSDKEncryptionKeyUnavailableNotificationSS">CPMobileSDKEncryptionKeyUnavailableNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v11CPMobileSDK35CPMobileSDKEncryptionKeyUserInfoKeySS">CPMobileSDKEncryptionKeyUserInfoKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v11CPMobileSDK18CPMobileSDKVersionSS">CPMobileSDKVersion</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F11CPMobileSDK26CPMobileSDKApplicationMainFTVSs5Int32GVSs20UnsafeMutablePointerGS1_VSs4Int8__GSqSS_GSqSS_GSqCS_18CPMobileSDKOptions__S0_">CPMobileSDKApplicationMain(_:_:_:_:_:)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1 class="h1_class">CPMobileSDKOptions</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CPMobileSDKOptions</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>A <code>CPMobileSDKOptions</code> object defines the behavior and policies to use when starting the mobile SDK.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11CPMobileSDK18CPMobileSDKOptions38allowAppUsageWithoutCapsuleIntegrationSb"></a>
+                    <a name="//apple_ref/swift/Property/allowAppUsageWithoutCapsuleIntegration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11CPMobileSDK18CPMobileSDKOptions38allowAppUsageWithoutCapsuleIntegrationSb">allowAppUsageWithoutCapsuleIntegration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Displays a button allowing users to disable the mobile SDK and use the application without security or integration with Capsule Workspace.</p>
+
+<p>Defaults to <code>false</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">allowAppUsageWithoutCapsuleIntegration</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11CPMobileSDK18CPMobileSDKOptions27enforceMobilePolicyOnSystemSb"></a>
+                    <a name="//apple_ref/swift/Property/enforceMobilePolicyOnSystem" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11CPMobileSDK18CPMobileSDKOptions27enforceMobilePolicyOnSystemSb">enforceMobilePolicyOnSystem</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Controls whether mobile policy is enforced on system actions, such as pasteboard copy-paste, document interactions, etc.</p>
+
+<p>When set to <code>false</code>, system actions, such as copy-paste will be performed normally, without policy enforment. It is up to the developer to ensure no data leaks.</p>
+
+<p>Defaults to <code>true</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">enforceMobilePolicyOnSystem</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://www.checkpoint.com" target="_blank" rel="external">Check Point Software Technologies</a>. All rights reserved.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
